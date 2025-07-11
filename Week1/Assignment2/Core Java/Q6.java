@@ -60,3 +60,27 @@ public class EmployeeCRUD {
         }
     }
 }
+public class Main {
+    public static void main(String[] args) {
+        EmployeeCRUD crud = new EmployeeCRUD();
+
+        // Adding employees
+        crud.addEmployee(new Employee(1, "Alice", "HR"));
+        crud.addEmployee(new Employee(2, "Bob", "IT"));
+        crud.addEmployee(new Employee(3, "Charlie", "Finance"));
+
+        System.out.println("All Employees:");
+        crud.listEmployees();
+
+        // Updating an employee
+        crud.updateEmployee(2, "Bob Marley", "Security");
+        System.out.println("\nAfter Updating Employee with ID 2:");
+        crud.listEmployees();
+
+        // Deleting an employee
+        crud.deleteEmployee(1);
+        System.out.println("\nAfter Deleting Employee with ID 1:");
+        crud.listEmployees();
+    }
+}
+
