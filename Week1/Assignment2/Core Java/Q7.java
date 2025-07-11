@@ -53,26 +53,32 @@ public class EmployeeJDBC {
 }
 public class Main {
     public static void main(String[] args) {
-        EmployeeCRUD crud = new EmployeeCRUD();
+        try {
+            EmployeeJDBC db = new EmployeeJDBC();
 
-        // Adding employees
-        crud.addEmployee(new Employee(1, "Alice", "HR"));
-        crud.addEmployee(new Employee(2, "Bob", "IT"));
-        crud.addEmployee(new Employee(3, "Charlie", "Finance"));
+            // Add employees
+            db.addEmployee(new Employee(1, "Alice", "HR"));
+            db.addEmployee(new Employee(2, "Bob", "IT"));
 
-        System.out.println("All Employees:");
-        crud.listEmployees();
+            // List all employees
+            System.out.println("All Employees:");
+            db.listEmployees();
 
-        // Updating an employee
-        crud.updateEmployee(2, "Bob Marley", "Security");
-        System.out.println("\nAfter Updating Employee with ID 2:");
-        crud.listEmployees();
+            // Update an employee
+            db.updateEmployee(new Employee(2, "Bob Marley", "Security"));
+            System.out.println("\nAfter Update:");
+            db.listEmployees();
 
-        // Deleting an employee
-        crud.deleteEmployee(1);
-        System.out.println("\nAfter Deleting Employee with ID 1:");
-        crud.listEmployees();
+            // Delete an employee
+            db.deleteEmployee(1);
+            System.out.println("\nAfter Deletion:");
+            db.listEmployees();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
 
 
